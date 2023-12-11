@@ -183,41 +183,79 @@ as문법을 사용하면 컬럼명을 바꿔서 출력이 가능하다.
 SELECT column1 \* column2 from card
 와 같은 방식으로 정수인경우에는 둘의 값을 연산해서 출력할 수 도 있다.
 
-**문자들의 연산?**
+# 문자열 연산
 
-문자들도 값들을 더하거나 할 수 있는데
-CONCAT(컬럼명1, 컬럼명2) 와 같은식으로 할 수있고, 기존의 컬럼값뿐만아니라 직접 문자 기입도 가능하다.
-TRIM(컬럼명) 을 쓰면 문자의 좌우공백을 제거할 수 있다.
-REPLACE(컬럼명) 으로 기존의 데이터값을 내가원하는걸로 대체해서 출력할 수 도 있다.
-그래서 공백을 제거 하고싶은 경우에는 
-select replace(공백을제거할 컬럼명, ' ', '') from 제거하고싶은 테이블과 같이 쓴다.
+문자열도 연산이 가능합. 예를 들어, 두 컬럼의 문자열을 합치려면 `CONCAT` 함수를 사용가능:
 
-**서브쿼리**
+```sql
+CONCAT(컬럼명1, 컬럼명2)
+```
+또한, TRIM 함수를 사용하면 문자열의 좌우 공백을 제거할 수 있고, REPLACE 함수를 사용하면 특정 문자열을 다른 문자열로 대체할 수 있다.
+
+
+```
+SELECT REPLACE(공백을제거할 컬럼명, ' ', '') FROM 제거하고싶은 테이블;
+```
+
+# 서브쿼리
 
 쿼리문을 여러번 쓰는게 귀찮으면, 하나로 합쳐서 사용할 수 있다.(필수사항은 아니며, 그냥 귀찮을때 편하게 쓰면 좋음) 
 사용 할 수 있는 조건은
   (1)1개의 데이터만 뱉는 쿼리문에만 서브쿼리를 작성 가능.
   (2)소괄호를 꼭 작성해주어야만 한다.
 
-  서브쿼리를 사용하지 않을 경우.
-  SELECT avg(사용금액) FROM card  -> 결과값 
-  SELECT * FROM card FROM card;
-  WHERE 사용금액 > 결과값 
+  ```
+  -- 서브쿼리를 사용하지 않을 경우
+  SELECT avg(사용금액) FROM card;  -- 결과값 
+  SELECT * FROM card WHERE 사용금액 > 결과값;
 
- 서브쿼리를 사용할 경우.
-  SELECT * FROM card
-  WHERE 사용금액 > (SELECT avg(사용금액) FROM card);
+  -- 서브쿼리를 사용할 경우
+  SELECT * FROM card WHERE 사용금액 > (SELECT avg(사용금액) FROM card);
+  ```
 
-**GROUP BY**
+# GROUP BY
   GROUP BY 칼럼명 을 하면 컬럼의 같은 값을 모아준다.
   보통 GROUP BY를 사용하는경우는, 카테고리 컬럼에 해당하며, 이같은 것을 모아준 후 집계함수같은 것을 사용해서 통계를 내어주면좋다.
 
 **HAVING**
   HAVING은 *GROUP BY결과*를 필터링 하고자 할때 사용, WHERE은 *테이블의 행*을 필터링할때 주로사용하므로 차이점에 대해 인지해두자.
 
+# DDL(Data Definition Language)
 
+DDL은 DB, 테이블, 컬럼 등의 생성/수정/삭제 문법들을 뜻한다.
 
+1. **데이터베이스 생성**
+    ```sql
+    CREATE DATABASE 작명;
+    ```
 
+2. **데이터베이스 삭제**
+    ```sql
+    DROP DATABASE 작명;
+    ```
+
+3. **테이블 작성**
+    ```sql
+    CREATE TABLE 원하는데이터베이스명.원하는테이블의이름작명 (
+        컬럼명1 int,
+        컬럼명2 varchar(100),
+        컬럼명3 int
+    );
+    ```
+
+4. **테이블 삭제**
+    ```sql
+    DROP TABLE 해당하는데이터베이스.작명;
+    ```
+
+5. **해당하는 테이블에 컬럼을 추가/수정/삭제**
+    ```sql
+    ALTER TABLE 해당하는테이블명 ADD 칼럼명 데이터타입;
+    ALTER TABLE 해당하는테이블명 MODIFY COLUMN 칼럼명 변경하고싶은 데이터타입;
+    ALTER TABLE 해당하는테이블명 DROP COLUMN 칼럼명;
+    ```
+
+ 반대로, `SELECT` 등 데이터를 다루는 문법은 DML(DATA Manipulation Language)라고 한다.
 
 ---
 
