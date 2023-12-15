@@ -297,4 +297,11 @@ DDL은 DB, 테이블, 컬럼 등의 생성/수정/삭제 문법들을 뜻한다.
 **DB설계의 포인트**
 위에 언급한 거와 같이 정규화, Primary key, foreign key를 잘쓰면 db설계를 아주 용이하게 해준다.
 
+**INNER JOIN**
+SELECT _ FROM 뒤에 여러가지 TABLE을 넣어도 상관없다
+SELECT 칼럼1, 칼럼2, 칼럼3 FROM TABLE1, TABLE2;
+그런데 이렇게 할경우 TABEL1의 row _ TABLE2의 row 의 모든값들을 보여주기 때문에, 동일한 값을 가진 id로 보통 묶어야해서
+필터링을 하는 where같은거를 써도 되는데, 이대신 INNER JOIN과 같은 문법을 써도 된다.
+테이블1 INNER JOIN 테이블2 ON 조건식 과 같은식으로 쓰면 더 쉽게 여러테이블들을 거느릴 수 있다.
+
 ---
