@@ -291,17 +291,60 @@ DDL은 DB, 테이블, 컬럼 등의 생성/수정/삭제 문법들을 뜻한다.
 (1) 첫컬럼에는 항상 Primary Key를 넣는게 좋다. -> 동명이인이 생겨버리는 경우, 구분하기 좋기 때문.
 (2) 다른테이블을 꺼내 사용할때 Primary key를 적을 수 있음 기입해두자.
 
-**Foreign KEY**
+# Foreign KEY
+
 여기서 메인이 되는 테이블에 다른 테이블들을 primary key로 연결 시킬수 있는 key값들을 foreign key라 하는데 이것을 해두면 - 조회가 더욱 쉬워진다. - 다른 테이블에서 쓰이는 데이터를 실수로 삭제해버리는 경우를 막아준다.
 
 **DB설계의 포인트**
 위에 언급한 거와 같이 정규화, Primary key, foreign key를 잘쓰면 db설계를 아주 용이하게 해준다.
 
-**INNER JOIN**
+# INNER JOIN
+
 SELECT _ FROM 뒤에 여러가지 TABLE을 넣어도 상관없다
 SELECT 칼럼1, 칼럼2, 칼럼3 FROM TABLE1, TABLE2;
 그런데 이렇게 할경우 TABEL1의 row _ TABLE2의 row 의 모든값들을 보여주기 때문에, 동일한 값을 가진 id로 보통 묶어야해서
 필터링을 하는 where같은거를 써도 되는데, 이대신 INNER JOIN과 같은 문법을 써도 된다.
 테이블1 INNER JOIN 테이블2 ON 조건식 과 같은식으로 쓰면 더 쉽게 여러테이블들을 거느릴 수 있다.
+여기서 3개이상의 테이블을 inner join 하고싶은 경우에도
+table 1 INNER JOIN table2 ON
+INNER JOIN table3 ON
+과 같이 작성 해주면 된다.
+
+# LEFT JOIN, RIGHT JOIN\*\*
+
+LEFT JOIN은 inner join + 왼쪽테이블도 전부 출력해달라는뜻
+RIGHT JOIN은 반대로 inner join + 오른쪽 테이블을 전부 출력해주세요 라는 뜻이다.
+
+-   사용처 -> 테이블 간의 접점이 없는 행들을 출력하고 싶을때 LEFT JOIN, RIGHT JOIN을 하면된다. 이를 통해서 빵꾸난 데이터들을 확인하기 편해짐.
+
+# IS NULL
+
+WHERE 찾고싶은데이터값의칼럼명 IS NULL
+해당칼럼의 데이터값이 null인 row를 찾아준다.
+
+# TABLE에 데이터 집어넣는 법
+
+INSERT INTO 테이블(칼럼명1, 칼럼명2) VALUES(넣을값1, 넣을값2)
+와 같이 작성하며 모든컬럼에 데이터를 넣을 때는 컬럼명을 생략해도 된다.
+응용으로써는
+(1)서브쿼리를 values대신에 넣어도된다.
+(2)테이블간의 데이터 복사를 할 수 있다. -> INSERT INTO stock select _ from stock2
+(3)새테이블 생성 & 복사 가능 -> CREATE TABLE 새로운테이블명 SELECT _ FROM 기존테이블명
+
+# 데이터를 수정하고 싶을 때는 UPDATE/SET/WHERE
+
+UPDATE/SET/WHERE
+UPDATE TABLE명
+SET 컬럼명(column행택) = 새로운데이터값
+WHERE rowaud(row행) = 원래데이터값
+
+(주의) 여기서 만약에 WHERE을 빼버리면 모든행이 수정되기에 조심
+
+# 데이터를 삭제하고 싶을 때는 DELETE/FROM/WHERE
+
+DELETE
+FROM 테이블명
+WHERE 조건식
+과 같이 작성하면 된다.
 
 ---
