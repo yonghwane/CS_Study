@@ -8,10 +8,10 @@
 
 ## Contents 📚
 
--   [Operating Systems](./OperationSystem.md) 🖥️
--   [Data Structures](./DataStructures.md) 💾
--   [Networks](./ComputerNetworks.md) 🌐
--   [Web Development](./WebDevelopment.md) 🕸️
+-   [Operating Systems](./cs_study_KOR/OperationSystem.md) 🖥️
+-   [Data Structures](./cs_study_KOR/DataStructures.md) 💾
+-   [Networks](./cs_study_KOR/ComputerNetworks.md) 🌐
+-   [Web Development](./cs_study_KOR/WebDevelopment.md) 🕸️
 
 ## How to Use 🕹️
 

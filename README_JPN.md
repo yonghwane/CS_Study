@@ -4,10 +4,10 @@
 
 ## コンテンツ 📚
 
--   [オペレーティングシステム](./OperatingSystems_jp.md) 🖥️
--   [データベース](./DataStructures_jp.md) 💾
--   [コンピュータネットワーク](./ComputerNetworks_jp.md) 🌐
--   [ウェブ開発](./WebDevelopment_jp.md) 🕸️
+-   [Operating Systems](./cs_study_JPN/OperationSystem.md) 🖥️
+-   [Data Structures](./cs_study_JPN/DataStructures.md) 💾
+-   [Networks](./cs_study_JPN/ComputerNetworks.md) 🌐
+-   [Web Development](./cs_study_JPN/WebDevelopment.md) 🕸️
 
 ## 使い方 🕹️
 
